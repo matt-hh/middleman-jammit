@@ -1,0 +1,12 @@
+package_path: <%= options[:package_path] %>
+gzip_assets: off
+javascript_compressor: yui
+
+javascripts:
+  all:
+    - <%= options[:build_dir] -%>/<%= options[:js_dir] -%>/jquery-1.6.js
+    - <%= options[:build_dir] -%>/<%= options[:js_dir] -%>/site.js
+
+stylesheets:
+  all:
+    - <%= options[:build_dir] -%>/<%= options[:css_dir] -%>/site.css

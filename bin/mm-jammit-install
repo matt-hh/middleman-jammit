@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+require "middleman"
+require "thor"
+require "thor/group"
+
+module Middleman::Jammit
+  class Generator < Thor::Group
+    include Thor::Actions
+
+    class_option :package_path, :default => "assets", :desc => 'The path to the asset files'
+
+    class_option :build_dir, :default => Middleman::Server.build_dir, :desc => 'Your build dir'
+    class_option :css_dir, :default => Middleman::Server.css_dir, :desc => 'The path to the css files'
+    class_option :js_dir, :default => Middleman::Server.js_dir, :desc => 'The path to the javascript files'
+
+
+    def self.source_root
+      File.join(File.dirname(__FILE__), ".." )
+    end
+
+    def create_jammit_config
+      config_dir = File.join(Middleman::Server.root, "config")
+      empty_directory config_dir
+      template "assets.yml.tt", File.join(config_dir, "assets.yml")
+      prepend_file File.join(Middleman::Server.root, "config.rb") do
+        ['require "middleman-jammit"', 'activate :jammit', "", ""].join("\n")
+      end
+    end
+
+  end
+end
+
+Middleman::Jammit::Generator.start

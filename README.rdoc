@@ -1,0 +1,41 @@
+= middleman-jammit
+
+Use Jammit in Middleman - merge multiple javascripts/stylesheets into one
+
+== Usage
+
+1. Install
+
+    gem install middleman-jammit
+
+2. Create your project
+
+    mm-init your-middleman-project
+
+3. Create config/assets.yml and activate feature in config.rb
+
+    cd your-middleman-project; mm-jammit-install
+
+   Run with <tt>--help</tt> for options.
+
+4. Add this to your views/layout.haml:
+
+    = include_stylesheets :all
+    = include_javascripts :all
+
+5. Run server/builder
+
+    mm-server
+
+  individual files are used (/javascripts/site.js, /stylesheets/site.css ...)
+
+    mm-build
+
+  packages are used (/assets/all.js and /assets/all.css)
+
+5. Enjoy!
+
+== Links
+
+* https://github.com/tdreyno/middleman
+* http://documentcloud.github.com/jammit/
