@@ -27,11 +27,11 @@ Use Jammit in Middleman - merge multiple javascripts/stylesheets into one
 
     mm-server
 
-  individual files are used (/javascripts/site.js, /stylesheets/site.css ...)
+   individual files are used (/javascripts/site.js, /stylesheets/site.css ...)
 
     mm-build
 
-  packages are used (/assets/all.js and /assets/all.css)
+   packages are used (/assets/all.js and /assets/all.css)
 
 5. Enjoy!
 
