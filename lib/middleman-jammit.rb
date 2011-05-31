@@ -76,11 +76,11 @@ module Middleman
           end
 
           def js_tag(url)
-            '<script src="%s"></script>' % url
+            javascript_include_tag url
           end
 
           def css_tag(url)
-            '<link rel="stylesheet" href="%s" />' % url
+            stylesheet_link_tag url
           end
 
       end
