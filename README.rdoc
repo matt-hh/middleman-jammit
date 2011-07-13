@@ -6,7 +6,8 @@ Use Jammit in Middleman - merge multiple javascripts/stylesheets into one
 
 1. Install
 
-    gem install middleman-jammit
+    gem install middleman-jammit -v 0.0.2 # for middleman 1.2.7
+    gem install middleman-jammit -v 0.1.0 # for middleman 2.x
 
 2. Create your project
 

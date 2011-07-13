@@ -60,7 +60,7 @@ module Middleman
           def generate_asset_tags(packages, type)
             packages.map do |pack|
               if ENV['MM_ENV'] == "build"
-                url = Middleman::Assets.get_url(::Jammit.asset_url(pack, type.to_sym))
+                url = asset_url(::Jammit.asset_url(pack, type.to_sym))
                 generate_tag(type, url)
               else
                 ::Jammit.packager.individual_urls(pack.to_sym, type.to_sym).map do |file|

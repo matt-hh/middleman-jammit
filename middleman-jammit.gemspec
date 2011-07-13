@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "middleman-jammit"
 
   s.add_dependency "jammit", "~> 0.6"
-  s.add_dependency "middleman", "~> 1.2.0"
+  s.add_dependency "middleman", "> 1.2.7"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
