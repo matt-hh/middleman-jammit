@@ -7,12 +7,12 @@ module Middleman
 
       class << self
         def registered(app)
-          full_build_dir = File.join(Middleman::Server.root, Middleman::Server.build_dir)
+          full_build_dir = File.join(Middleman.server.root, Middleman.server.build_dir)
 
-          FileUtils.mkdir_p File.join(full_build_dir, Middleman::Server.js_dir)
-          FileUtils.mkdir_p File.join(full_build_dir, Middleman::Server.css_dir)
+          FileUtils.mkdir_p File.join(full_build_dir, Middleman.server.js_dir)
+          FileUtils.mkdir_p File.join(full_build_dir, Middleman.server.css_dir)
 
-          jammit_config_file = File.join(Middleman::Server.root, 'config', 'assets.yml')
+          jammit_config_file = File.join(Middleman.server.root, 'config', 'assets.yml')
           raise ConfigurationNotFound, "could not find \"#{jammit_config_file}\" " unless File.exists?(jammit_config_file)
           jammit_conf = YAML.load(ERB.new(File.read(jammit_config_file)).result)
 
@@ -23,7 +23,7 @@ module Middleman
 
           Middleman::Builder.after_run "jammit" do
             full_package_path = File.join(full_build_dir, ::Jammit.package_path)
-            ::Jammit.packager.precache_all(full_package_path, Middleman::Server.root)
+            ::Jammit.packager.precache_all(full_package_path, Middleman.server.root)
             say_status "Jammit", "build/assets"
           end
 
@@ -38,7 +38,7 @@ module Middleman
               asset_files.each do |name, files|
                 files.each do |f|
                   next if f["*"].present?
-                  FileUtils.touch File.join(Middleman::Server.root, f)
+                  FileUtils.touch File.join(Middleman.server.root, f)
                 end
               end
             end
