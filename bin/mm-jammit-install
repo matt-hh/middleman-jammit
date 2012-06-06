@@ -9,9 +9,9 @@ module Middleman::Jammit
 
     class_option :package_path, :default => "assets", :desc => 'The path to the asset files'
 
-    class_option :build_dir, :default => Middleman::Server.build_dir, :desc => 'Your build dir'
-    class_option :css_dir, :default => Middleman::Server.css_dir, :desc => 'The path to the css files'
-    class_option :js_dir, :default => Middleman::Server.js_dir, :desc => 'The path to the javascript files'
+    class_option :build_dir, :default => Middleman.server.build_dir, :desc => 'Your build dir'
+    class_option :css_dir, :default => Middleman.server.css_dir, :desc => 'The path to the css files'
+    class_option :js_dir, :default => Middleman.server.js_dir, :desc => 'The path to the javascript files'
 
 
     def self.source_root
@@ -19,10 +19,10 @@ module Middleman::Jammit
     end
 
     def create_jammit_config
-      config_dir = File.join(Middleman::Server.root, "config")
+      config_dir = File.join(Middleman.server.root, "config")
       empty_directory config_dir
       template "assets.yml.tt", File.join(config_dir, "assets.yml")
-      prepend_file File.join(Middleman::Server.root, "config.rb") do
+      prepend_file File.join(Middleman.server.root, "config.rb") do
         ['require "middleman-jammit"', 'activate :jammit', "", ""].join("\n")
       end
     end
