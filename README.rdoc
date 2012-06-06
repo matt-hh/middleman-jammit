@@ -7,11 +7,11 @@ Use Jammit in Middleman - merge multiple javascripts/stylesheets into one
 1. Install
 
     gem install middleman-jammit -v 0.0.2 # for middleman 1.2.7
-    gem install middleman-jammit -v 0.1.0 # for middleman 2.x
+    gem install middleman-jammit -v 0.2.0 # for middleman 2.x
 
 2. Create your project
 
-    mm-init your-middleman-project
+    middleman init your-middleman-project
 
 3. Create config/assets.yml and activate feature in config.rb
 
@@ -26,11 +26,11 @@ Use Jammit in Middleman - merge multiple javascripts/stylesheets into one
 
 5. Run server/builder
 
-    mm-server
+    middleman server
 
    individual files are used (/javascripts/site.js, /stylesheets/site.css ...)
 
-    mm-build
+    middleman build
 
    packages are used (/assets/all.js and /assets/all.css)
 
